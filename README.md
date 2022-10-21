@@ -14,3 +14,10 @@ Se usar o comando:
 java -jar .\dist\simple-expr-ast.jar 
 ```
 É possível ir inserindo os comandos direto no terminal, não é necessário o arquivo teste.input
+
+Usar ``` ctrl + C ``` para encerrar
+
+Para compilar usar:
+```
+ant dist
+```

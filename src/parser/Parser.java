@@ -11,6 +11,7 @@ import ast.Number;
 import ast.Identifier;
 import ast.Operator;
 import interpreter.Interpreter;
+import transpiler.Transpiler;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20150930 (SVN rev 66) generated parser.
@@ -259,7 +260,10 @@ class CUP$Parser$actions {
 		int eright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		AST e = (AST)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 
-            Interpreter.interpret(e);
+            Transpiler.transpile(e);
+            System.out.println(Transpiler.getStackProgram());
+            Transpiler.clearStackProgram();
+            // Interpreter.interpret(e);
             //AST.printAST(e);
         
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("NT$0",7, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);

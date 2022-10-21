@@ -7,6 +7,8 @@ import ast.Identifier;
 import ast.Operator;
 import interpreter.Interpreter;
 
+import transpiler.Transpiler;
+
 parser code {:
     public void syntax_error(Symbol s) {
         System.err.println("Erro de sintaxe. Token inesperado: " + sym.terminalNames[s.sym] +
@@ -60,7 +62,10 @@ expr_list ::= expr_list expr_part
     ;
 
 expr_part ::= expr:e {:
-            Interpreter.interpret(e);
+            Transpiler.transpile(e);
+            System.out.println(Transpiler.getStackProgram());
+            Transpiler.clearStackProgram();
+            // Interpreter.interpret(e);
             //AST.printAST(e);
         :} SEMI
     | error SEMI
