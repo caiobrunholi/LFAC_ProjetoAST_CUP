@@ -17,7 +17,22 @@ java -jar .\dist\simple-expr-ast.jar
 
 Usar ``` ctrl + C ``` para encerrar
 
+-----------------------------------------------------------------------------------
+### Exercício:
+
 Para compilar usar:
 ```
 ant dist
+```
+
+Usar o comando:
+```
+java -jar .\dist\simple-expr-ast.jar 
+```
+
+Inserir coisas no terminal como:
+```
+1;
+3;
+1+2+3;
 ```
