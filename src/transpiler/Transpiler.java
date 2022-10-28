@@ -1,5 +1,7 @@
 package transpiler;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 // Classe para interpretar o código que está representado em uma AST produzida
 // pelo analisador sintático
 import java.util.HashMap; //para armazenar as variáveis e seus valores
@@ -51,6 +53,14 @@ public class Transpiler {
                                 .getIdentifierName();
                         // adicionar ou atualizar a variável
                         symbolTable.put(id, 0.0);
+                        // // ler seu valor
+                        // BufferedReader reader = new BufferedReader(
+                        //         new InputStreamReader(System.in));
+                        // // prompt
+                        // System.out.print("READ\n");
+                        // Double val = Double.parseDouble(reader.readLine());
+                        // // adicionar ou atualizar a variável
+                        // symbolTable.put(id, val);
                         break;
                     }
                     case sym.ASSIGN: { // atribuição
@@ -64,27 +74,35 @@ public class Transpiler {
                         break;
                     }
                     case sym.MINUS: { // subtração
+                        stackProgram.append(String.format("%s\n", "SUB"));
                         break;
                     }
                     case sym.UMINUS: { // inversão de sinal
+                        stackProgram.append(String.format("%s\n", "NEG"));
                         break;
                     }
                     case sym.TIMES: { // multiplicação
+                        stackProgram.append(String.format("%s\n", "MUL"));
                         break;
                     }
                     case sym.DIVIDE: { // divisão
+                        stackProgram.append(String.format("%s\n", "DIV"));
                         break;
                     }
                     case sym.MOD: { // resto
+                        stackProgram.append(String.format("%s\n", "MOD"));
                         break;
                     }
                     case sym.EXP: {// exponenciação
+                        stackProgram.append(String.format("%s\n", "EXP"));
                         break;
                     }
                     case sym.COS: { // coseno
+                        stackProgram.append(String.format("%s\n", "COS"));
                         break;
                     }
                     case sym.SIN: { // seno
+                        stackProgram.append(String.format("%s\n", "SIN"));
                         break;
                     }
                 }
