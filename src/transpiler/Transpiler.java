@@ -53,20 +53,15 @@ public class Transpiler {
                                 .getIdentifierName();
                         // adicionar ou atualizar a variável
                         symbolTable.put(id, 0.0);
-                        // // ler seu valor
-                        // BufferedReader reader = new BufferedReader(
-                        //         new InputStreamReader(System.in));
-                        // // prompt
-                        // System.out.print("READ\n");
-                        // Double val = Double.parseDouble(reader.readLine());
-                        // // adicionar ou atualizar a variável
-                        // symbolTable.put(id, val);
+                        stackProgram.append(String.format("READ\n"));
+                        stackProgram.append(String.format("POP %s\n", id));
                         break;
                     }
                     case sym.ASSIGN: { // atribuição
                         // obter o identificador
                         String id = ((Identifier) leftAST).getIdentifierName();
                         symbolTable.put(id, 0.0);
+                        stackProgram.append(String.format("POP %s\n", id));
                         break;
                     }
                     case sym.PLUS: {// soma
@@ -118,6 +113,7 @@ public class Transpiler {
                 Double value = symbolTable.get(id.getIdentifierName());
                 // se estiver na tabela de símbolos, basta retornar seu
                 // conteúdo na pilha
+                stackProgram.append(String.format("PUSH %.2f\n", id.getValue().toString()));
                 if (value != null) {
                     // armazenar no campo de valor da árvore
                 } else { // não está na tabela
